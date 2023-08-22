@@ -22,12 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-      - uses: actions/download-artifact@v3.0.2
+      - uses: dawidd6/action-download-artifact@v2
         id: download
         with:
-          name: ${{ format('build_{0}', github.event.workflow_run.id) }}
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          workflow_conclusion: "success"
+          name: build
           path: build
       - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
+        run: echo "${{steps.download.outputs.artifacts}}"
       - name: Display structure of downloaded files
         run: ls -R build

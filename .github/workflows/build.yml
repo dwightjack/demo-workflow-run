@@ -23,6 +23,6 @@ jobs:
       - uses: actions/upload-artifact@v3.1.2
         with:
           retention-days: 1
-          name: ${{ format('build_{0}', github.run_id)}}
+          name: build
           path: |
             dist
