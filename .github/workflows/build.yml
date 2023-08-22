@@ -19,10 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - uses: ./.github/actions/setup
-      - run: pnpm run build
+      - run: pnpm -r build
       - uses: actions/upload-artifact@v3.1.2
         with:
           retention-days: 1
           name: build
           path: |
-            dist
+            packages/app-a/dist
+            packages/app-b/dist

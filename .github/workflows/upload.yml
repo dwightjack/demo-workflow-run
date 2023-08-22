@@ -28,8 +28,8 @@ jobs:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           workflow_conclusion: "success"
           name: build
-          path: build
+          path: dist
       - name: 'Echo download path'
         run: echo "${{steps.download.outputs.artifacts}}"
       - name: Display structure of downloaded files
-        run: ls -R build
+        run: ls -R dist

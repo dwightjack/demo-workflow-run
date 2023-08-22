@@ -1,23 +1,46 @@
 lockfileVersion: '6.0'
 
-dependencies:
-  vue:
-    specifier: ^3.3.4
-    version: 3.3.4
+importers:
 
-devDependencies:
-  '@vitejs/plugin-vue':
-    specifier: ^4.2.3
-    version: 4.2.3(vite@4.4.5)(vue@3.3.4)
-  typescript:
-    specifier: ^5.0.2
-    version: 5.0.2
-  vite:
-    specifier: ^4.4.5
-    version: 4.4.5
-  vue-tsc:
-    specifier: ^1.8.5
-    version: 1.8.5(typescript@5.0.2)
+  .: {}
+
+  packages/app-a:
+    dependencies:
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.3
+        version: 4.2.3(vite@4.4.5)(vue@3.3.4)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.0.2
+      vite:
+        specifier: ^4.4.5
+        version: 4.4.5
+      vue-tsc:
+        specifier: ^1.8.5
+        version: 1.8.5(typescript@5.0.2)
+
+  packages/app-b:
+    dependencies:
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.3
+        version: 4.2.3(vite@4.4.5)(vue@3.3.4)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.0.2
+      vite:
+        specifier: ^4.4.5
+        version: 4.4.5
+      vue-tsc:
+        specifier: ^1.8.5
+        version: 1.8.5(typescript@5.0.2)
 
 packages:
 
