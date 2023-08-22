@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+# To cancel the previous runs when a new executions is started, configure concurrency.
+# This is recommended in order to prevent multiple executions running simultaneously.
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: contains(github.ref_name, 'renovate/') == false && contains(github.ref_name, 'dependabot/') == false
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: ./.github/actions/setup
+      - run: pnpm run build
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          retention-days: 1
+          name: ${{ format('build_{0}', github.run_id)}}
+          path: |
+            dist

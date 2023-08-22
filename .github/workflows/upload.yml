@@ -1,0 +1,33 @@
+name: Upload
+
+on:
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
+
+# To cancel the previous runs when a new executions is started, configure concurrency.
+# This is recommended in order to prevent multiple executions running simultaneously.
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  upload:
+    if: |
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    name: Upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: actions/download-artifact@v3.0.2
+        id: download
+        with:
+          name: ${{ format('build_{0}', github.event.workflow_run.id) }}
+          path: build
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+      - name: Display structure of downloaded files
+        run: ls -R build
