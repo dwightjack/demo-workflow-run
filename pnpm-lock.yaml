@@ -4,7 +4,7 @@ importers:
 
   .: {}
 
-  packages/app-a:
+  docs/app-b:
     dependencies:
       vue:
         specifier: ^3.3.4
@@ -23,7 +23,7 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5(typescript@5.0.2)
 
-  packages/app-b:
+  packages/app-a:
     dependencies:
       vue:
         specifier: ^3.3.4
