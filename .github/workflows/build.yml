@@ -26,4 +26,4 @@ jobs:
           name: build
           path: |
             packages/app-a/dist
-            packages/app-b/dist
+            docs/app-b/dist
