@@ -30,6 +30,8 @@ jobs:
           name: build
           path: dist
       - name: 'Echo download path'
-        run: echo "${{steps.download.outputs.artifacts}}"
+        run: |
+          echo "${{steps.download.outputs.artifacts}}"
+          echo $GITHUB_REF_NAME
       - name: Display structure of downloaded files
         run: ls -R dist
