@@ -6,6 +6,11 @@ on:
     types:
       - completed
 
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
 # To cancel the previous runs when a new executions is started, configure concurrency.
 # This is recommended in order to prevent multiple executions running simultaneously.
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
