@@ -37,6 +37,6 @@ jobs:
       - name: 'Echo download path'
         run: |
           echo "${{steps.download.outputs.artifacts}}"
-          echo "${{github.event.workflow_run.head_branch}}"
+          echo "${{ github.event.repository.name }}"
       - name: Display structure of downloaded files
         run: ls -R dist
